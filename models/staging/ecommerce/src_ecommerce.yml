@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: ecommerce
+    database: ecom1692079383366xgtvmjrszdpyjtax
+    schema: public
+    tables:
+      - name: customers
+      - name: orders
+      - name: employees
+      - name: offices
+      - name: orderdetails
+      - name: payments
+      - name: products
+      - name: product_lines

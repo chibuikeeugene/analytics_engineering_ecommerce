@@ -10,4 +10,4 @@ select
     territory
 
 from {{ source('ecommerce', 'offices') }}
-limit 10
+-- limit 10

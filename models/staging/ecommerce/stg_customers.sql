@@ -13,4 +13,4 @@ select
     sales_rep_employee_number,
     credit_limit
 from {{ source('ecommerce', 'customers') }}
-limit 100
+-- limit 100

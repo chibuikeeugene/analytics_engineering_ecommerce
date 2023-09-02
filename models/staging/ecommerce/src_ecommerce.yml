@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: ecommerce
-    database: ecom1692079383366xgtvmjrszdpyjtax
-    schema: public
+    database: analytics-engineering-396721
+    schema: ecommerce_analytics
     tables:
       - name: customers
       - name: orders

@@ -6,4 +6,4 @@ select
     order_line_number
     
 from {{ source('ecommerce', 'orderdetails') }}
-limit 10
+limit 100

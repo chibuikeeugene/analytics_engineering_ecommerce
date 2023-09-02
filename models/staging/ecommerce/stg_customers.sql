@@ -1,4 +1,4 @@
-select 
+select
     customer_number,
     customer_name,
     contact_last_name,
@@ -12,6 +12,5 @@ select
     country,
     sales_rep_employee_number,
     credit_limit
-
 from {{ source('ecommerce', 'customers') }}
-limit 10
+limit 100

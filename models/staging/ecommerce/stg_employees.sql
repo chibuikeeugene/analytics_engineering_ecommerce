@@ -8,4 +8,4 @@ select
     reports_to,
 
 from {{ source('ecommerce', 'employees') }}
-limit 10
+limit 100

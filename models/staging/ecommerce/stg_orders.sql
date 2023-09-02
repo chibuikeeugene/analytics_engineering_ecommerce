@@ -8,4 +8,4 @@ select
     customer_number
 
 from {{ source('ecommerce', 'orders') }}
-limit 10
+limit 100

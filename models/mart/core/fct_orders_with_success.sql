@@ -12,39 +12,39 @@ payments as (
 
 successful_order_payments as (
     select
-    orders.order_number,
-    orders.customer_number, 
-    count(orders.order_number) as number_of_orders,
-    payments.payment_date,
-    coalesce(sum(payments.amount),0) as amount
-    -- customers.city,
-    -- customers.country,
-    -- orders.status as status,
-    -- orders.order_date as order_date,
-    -- orders.shipped_date as shipped_date,
+        orders.order_number,
+        orders.order_date,
+        orders.customer_number, 
+        count(orders.order_number) as number_of_orders,
+        payments.payment_date,
+        coalesce(sum(payments.amount),0) as amount,
+        orders.status
 
     from orders
     left join payments using (customer_number)
-    -- where status = 'Shipped' || 'Resolved'
-    group by order_number,customer_number,payment_date
-    order by number_of_orders desc 
+
+    where orders.status = 'Shipped' or orders.status = 'Resolved'
+
+    group by order_number,customer_number,order_date,payment_date, status
+
+    order by payment_date desc 
+),
+
+final as (
+    select
+        customers.customer_name,
+        customers.city,
+        customers.country,
+        successful_order_payments.order_number,
+        successful_order_payments.order_date,
+        successful_order_payments.payment_date,
+        successful_order_payments.amount,
+        successful_order_payments.status
+
+    from customers right join successful_order_payments using (customer_number)
+
+    group by 1,2,3,4,5,6,7,8
+
 )
 
--- final as (
---     select
---     successful_orders.order_number,
---     -- successful_orders.customer_number,
---     -- successful_orders.status,
---     -- successful_orders.order_date,
---     -- successful_orders.shipped_date,
---     payments.payment_date,
---     payments.amount
-
---     from successful_orders
---     left join customers using (order_number)
---     left join payments using (order_number)
-
---     group by customer_name
--- )
-
-select * from successful_order_payments
+select * from final

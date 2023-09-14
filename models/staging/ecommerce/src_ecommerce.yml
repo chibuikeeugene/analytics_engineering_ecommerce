@@ -2,6 +2,13 @@ version: 2
 
 sources:
   - name: ecommerce
+    freshness:
+      warn_after:
+        count: 7
+        period: day
+      error_after:
+        count: 30
+        period: day
     database: analytics-engineering-396721
     schema: ecommerce_analytics
     tables:

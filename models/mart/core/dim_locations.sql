@@ -6,8 +6,22 @@ products as (
     select * from {{ ref('dim_products') }}
 ),
 
-order_products as (
+ordered_products as (
+    select 
+    orders.city,
+    orders.country,
+    orders.order_date,
+    orders.payment_date,
+    orders.amount,
+    orders.quantity_ordered,
+    products.product_name,
+    products.product_vendor,
+    products.product_line
 
+    from orders
+    left join products using (product_code)
+    group by 1,2,3,4,5,6,7,8,9
+    
 )
 
-select * from order_products
+select * from ordered_products

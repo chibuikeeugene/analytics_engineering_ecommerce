@@ -14,6 +14,7 @@ successful_order_payments as (
     select
         orders.order_number,
         orders.order_date,
+        orders.status,
         orders.comments,
         orders.customer_number, 
         count(orders.order_number) as number_of_orders,
@@ -25,7 +26,7 @@ successful_order_payments as (
 
     where orders.status = 'Cancelled' or orders.status =  'Disputed'
 
-    group by order_number,customer_number,order_date,payment_date, comments
+    group by order_number,customer_number,order_date,payment_date, comments, status
 
     order by payment_date desc 
 ),
@@ -36,6 +37,7 @@ final as (
         customers.customer_name,
         customers.city,
         customers.country,
+        successful_order_payments.status,
         successful_order_payments.order_number,
         successful_order_payments.order_date,
         successful_order_payments.payment_date,
@@ -43,7 +45,7 @@ final as (
 
     from customers inner join successful_order_payments using (customer_number)
 
-    group by 1,2,3,4,5,6,7,8
+    group by 1,2,3,4,5,6,7,8,9
 
 )
 

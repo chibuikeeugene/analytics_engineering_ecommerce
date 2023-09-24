@@ -29,7 +29,7 @@ successful_orders as (
 final as (
     select
         customer_orders.customer_number as cust_no,
-        customer_orders.customer_name as cust_name,
+        customer_orders.customer_name as customer_name,
         customer_orders.contact_first_name as cust_f_name,
         customer_orders.contact_last_name as cust_l_name,
         customer_orders.credit_limit,

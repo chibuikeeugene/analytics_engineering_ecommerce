@@ -20,7 +20,8 @@ orders as (
 ),
 
 customer_orders as (
-    select 
+    select
+    cust_no,
     customer_name,
     order_number,
     amount,
@@ -28,22 +29,23 @@ customer_orders as (
     payment_date
     from customers right join orders
     using (customer_name)
-    group by customer_name, order_number, amount, order_date, payment_date
+    group by customer_name, order_number, amount, order_date, payment_date, cust_no
 
 ),
 
 -- RFM Analysis code block
 rfm as (
-    select 
+    select
+    cust_no, 
     customer_name,
     max(order_date) as Last_order_date,
     (select max(order_date) from customer_orders) as max_order_date,
-    date_diff((select max(order_date) from customer_orders), max(order_date), day) as recency,
+    date_diff((select max(order_date) from customer_orders), max(order_date), day) as recency_days,
     coalesce(COUNT(order_number),0) as frequency,
     coalesce(round(SUM(amount),1),0) as monetary,
     coalesce(round(AVG(amount),1),0) as avg_monetary
     from customer_orders
-    group by customer_name
+    group by customer_name, cust_no
 
 ),
 
@@ -51,7 +53,7 @@ rfm_calc AS
 (
     SELECT 
         *,
-        NTILE(4) OVER (ORDER BY recency) as rfm_recency,
+        NTILE(4) OVER (ORDER BY recency_days) as rfm_recency,
         NTILE(4) OVER (ORDER BY frequency) rfm_frequency,
         NTILE(4) OVER (ORDER BY monetary) rfm_monetary
 
@@ -60,9 +62,10 @@ rfm_calc AS
 
 final as (
     SELECT 
+        cust_no,
         customer_name,
         Last_order_date,
-        recency,
+        recency_days,
         frequency,
         monetary,
         avg_monetary,

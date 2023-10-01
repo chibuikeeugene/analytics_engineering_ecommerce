@@ -16,11 +16,12 @@ ordered_products as (
     orders.quantity_ordered,
     products.product_name,
     products.product_vendor,
-    products.product_line
+    products.product_line,
+    customer_name
 
     from orders
     left join products using (product_code)
-    group by 1,2,3,4,5,6,7,8,9
+    group by 1,2,3,4,5,6,7,8,9,10
     
 )
 

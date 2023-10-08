@@ -1,5 +1,5 @@
 A. Project Title: 
-Ecommerce Analytics Engineering with DBT and Big query
+1. Ecommerce Analytics Engineering with DBT and Big Query
 
 B. Project Objectives:
 1. To develop and deploy a real-time e-commerce data analytics platform for use by business stakeholders

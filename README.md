@@ -14,7 +14,6 @@ D. Project Tools:
 4. Airbyte
 
 E. Looker Dashboard - Metrics
-https://lookerstudio.google.com/reporting/222f7f26-cf08-40b7-8cc0-9ddaef46c858
 ![Global_B2B_Ecommerce_Key_Performance_Indicators-1](https://github.com/chibuikeeugene/analytics_engineering_ecommerce/assets/57559517/27a650e3-70df-416e-9a1e-bbeae6622406)
 ![Global_B2B_Ecommerce_Key_Performance_Indicators-2](https://github.com/chibuikeeugene/analytics_engineering_ecommerce/assets/57559517/b2962d78-d7ae-4b8a-adff-1c9a38f3e2e2)
 ![Global_B2B_Ecommerce_Key_Performance_Indicators-3](https://github.com/chibuikeeugene/analytics_engineering_ecommerce/assets/57559517/c1c192e1-e475-4ae5-a4ea-e4bb2c19bfc8)

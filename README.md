@@ -14,3 +14,4 @@ D. Project Tools:
 4. Airbyte
 
 E. Dashboard - Metrics
+<iframe width="600" height="1250" src="https://lookerstudio.google.com/embed/reporting/222f7f26-cf08-40b7-8cc0-9ddaef46c858/page/5cMeD" frameborder="0" style="border:0" allowfullscreen></iframe>
